@@ -3,6 +3,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Biografia- Valeria Trujillo</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 </head>
 <body>
     <section>
@@ -21,13 +22,36 @@
              <li><strong>TITULOS ACADÉMICOS:</strong> Bachiller y tecnico en contabilidad y finanzas del sena</li>
              <li><strong>CURSOS CON CERTIFICADO:</strong></li> Curso en fotografia, curso en nivel B1 en ingles, curso de Gestion de serguridad y salud en el trabajo. 
          </ul>
-     </section>section> 
+     </section>
 
      <section>
          <h2> INTERESES Y PASATIEMPOS</h2>
          <p> Aunque mi tiempo es limitado entre el estudio y el trabajo, en mis tiempos libres me gusta leer y escribir historias o "novelas", escuchar musica y dibujar, pasar tiempo con mi familia y mi novio y algunas veces estoy en mis redes sociales.</p>
-     </section>section>
+     </section>
+
+     <section>
+         <h2><strong> MI UBICACION</strong></h2>
+         <div id="map" style="heigth: 300px; width: 100%; border-radius: 10 px;"></div>
+     </section>
  </main>
-    
+    <!-- Carga de la biblioteca Leaflet JS -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<!-- Instrucciones para centrar el mapa en Soacha -->
+<script>
+    // 1. Crear el mapa dentro del div 'map' centrado en las coordenadas de Soacha
+    var map = L.map('map').setView([4.5804, -74.2162], 13);
+
+    // 2. Cargar la capa de imágenes de OpenStreetMap
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '&copy; OpenStreetMap'
+    }).addTo(map);
+
+    // 3. Poner un marcador azul con un mensaje sobre Soacha
+    L.marker([4.5804, -74.2162]).addTo(map)
+        .bindPopup('<b>Soacha</b><br>Cundinamarca, Colombia')
+        .openPopup();
+</script>
 </body>
 </html>
